@@ -1,0 +1,21 @@
+version: "3"
+services:
+  api-app:
+    build:
+      context: ./api
+    ports:
+      - "4000:4000"
+    container_name: api-app
+    volumes:
+      - ./api:/usr/src/app/api
+      - ./api/node_modules
+  client-app:
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+    container_name: client-app
+    stdin_open: true
+    volumes:
+      - ./client:/usr/src/app/client
+      - ./client/node_modules
